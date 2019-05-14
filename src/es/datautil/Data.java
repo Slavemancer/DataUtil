@@ -12,14 +12,8 @@ public class Data {
 	public static boolean anoBissexto(int ano)
 	{
 		// IMPLEMENTAR
-		// Implemente a lógica a partir do Fluxograma dado em anexo!
-		
-		
-		
-		
-		
-		
-		return true;
+		// Implemente a lógica a partir do Fluxograma dado em anexo!		
+		return ano % 4 == 0&&!(ano % 100 == 0)||(ano % 400 == 0 && ano % 100 == 0);
 	}
 	
 	
@@ -34,9 +28,9 @@ public class Data {
 	{
 		// IMPLEMENTAR
 		// Implemente a lógica a partir do Fluxograma dado em anexo!
-		
-		
-		return 0;
+		if(mes.getNumeroMes()==2)
+			throw new IllegalArgumentException("Para o Mês de Fevereiro utilize o outro Método");
+		return diasMes(mes,2000);
 	}
 	
 
@@ -56,10 +50,12 @@ public class Data {
 			
 		
 		// Se não for Meses.FEVEREIRO, ignora o ano e chama o método diasMes(mes)
-		
-		
-		
-		return 0;
+		if(mes.getNumeroMes()==2)
+			return anoBissexto(ano)?29:28;
+		if ((mes.getNumeroMes()%2==1&&mes.getNumeroMes()<=7)||(mes.getNumeroMes()%2==0&&mes.getNumeroMes()>=7)) 
+			return 31;
+		else
+			return 30;
 	}
 
 	
